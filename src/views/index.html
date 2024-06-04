@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Email Client</title>
+    <script>
+        async function addAccount() {
+            window.location.href = '/auth/outlook';
+        }
+
+        async function fetchEmails() {
+            const response = await fetch('/emails');
+            const emails = await response.json();
+            const emailList = document.getElementById('email-list');
+            emailList.innerHTML = '';
+            emails.forEach(email => {
+                const li = document.createElement('li');
+                li.textContent = `${email._source.subject} - ${email._source.from}`;
+                emailList.appendChild(li);
+            });
+        }
+
+        window.onload = fetchEmails;
+    </script>
+</head>
+
+<body>
+    <h1>Email Client</h1>
+    <button onclick="addAccount()">Add Outlook Account</button>
+    <ul id="email-list"></ul>
+</body>
+
+</html>
