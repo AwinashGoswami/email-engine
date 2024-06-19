@@ -11,10 +11,8 @@ passport.use(new OutlookStrategy({
     callbackURL: process.env.CALLBACK_URL,
     passReqToCallback: true
 },
-
-
     async function (req, accessToken, refreshToken, profile, done) {
-       
+
         // Save user profile and tokens to the session
         req.session.outlookProfile = profile;
         req.session.outlookToken = accessToken;

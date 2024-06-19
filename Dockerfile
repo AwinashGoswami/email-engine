@@ -9,3 +9,4 @@ RUN npm install --insecure
 COPY . .
 
 CMD ["node", "src/app.js"]
+

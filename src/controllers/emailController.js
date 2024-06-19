@@ -40,6 +40,9 @@ exports.getEmails = async (req, res) => {
                 query: {
                     match_all: {}
                 }
+            },
+            headers: {
+                'Content-Type': 'application/json'
             }
         });
         res.json(body.hits.hits);

@@ -2,7 +2,11 @@ const { Client } = require('@elastic/elasticsearch');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
-const esClient = new Client({ node: process.env.ELASTICSEARCH_URL });
+const esClient = new Client({
+    node: process.env.ELASTICSEARCH_URL, headers: {
+        'Content-Type': 'application/json'
+    }
+});
 
 const connection = async () => {
     try {
